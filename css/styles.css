@@ -975,6 +975,9 @@ html[lang="hi"] .welcome-quote { font-family: "Tiro Devanagari Hindi", serif; fo
 /* Values */
 .value-card { text-align: left; }
 
+/* Main deity photo (About page) — keep the face and crown in frame */
+.deity-feature .framed img { object-position: 50% 28%; }
+
 /* Spiritual guide (About page) */
 .guru-portrait img { object-position: 70% 30%; }
 .guru-name {
