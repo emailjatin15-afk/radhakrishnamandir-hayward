@@ -406,13 +406,13 @@
       'ui.closedNow': 'Closed now · opens 8:00 AM',
       'ui.today': 'Today',
       'ui.todayIs': 'Today · {day}',
-      'ui.programToday': "Today's weekly program. Time: [PLACEHOLDER]",
+      'ui.programToday': "Today's weekly program — all are welcome.",
       'ui.nextProgram': 'Next weekly program: {program} on {day}',
       'ui.festival': 'Festival',
       'ui.special': 'Special Event',
       'ui.dateTBA': 'Date to be announced',
       'ui.tba': 'TBA',
-      'ui.tentative': 'Tentative date — [PLACEHOLDER: confirm]',
+      'ui.tentative': 'Date to be confirmed',
       'ui.timeTBA': 'Time: [PLACEHOLDER]',
       'ui.noEvents': 'No upcoming events in this category right now. Please check back soon.',
       'ui.imageCount': '{n} of {total}',
@@ -794,13 +794,13 @@
       'ui.closedNow': 'अभी बंद है · सुबह 8:00 बजे खुलेगा',
       'ui.today': 'आज',
       'ui.todayIs': 'आज · {day}',
-      'ui.programToday': 'आज का साप्ताहिक कार्यक्रम। समय: [PLACEHOLDER]',
+      'ui.programToday': 'आज का साप्ताहिक कार्यक्रम — सभी का स्वागत है।',
       'ui.nextProgram': 'अगला साप्ताहिक कार्यक्रम: {day} को {program}',
       'ui.festival': 'त्योहार',
       'ui.special': 'विशेष कार्यक्रम',
       'ui.dateTBA': 'तिथि की घोषणा बाद में होगी',
       'ui.tba': 'शीघ्र',
-      'ui.tentative': 'संभावित तिथि — [PLACEHOLDER: confirm]',
+      'ui.tentative': 'तिथि की पुष्टि होनी है',
       'ui.timeTBA': 'समय: [PLACEHOLDER]',
       'ui.noEvents': 'इस श्रेणी में अभी कोई आगामी कार्यक्रम नहीं है। कृपया बाद में देखें।',
       'ui.imageCount': '{total} में से {n}',
@@ -1182,7 +1182,8 @@
       badge = `<span class="m">${escapeHTML(t('ui.tba'))}</span><span class="d">ॐ</span><span class="w">&nbsp;</span>`;
       dateText = t('ui.dateTBA');
     }
-    const time = ev.time ? escapeHTML(ev.time[currentLang] || ev.time.en) : markPlaceholders(escapeHTML(t('ui.timeTBA')));
+    const timeText = ev.time ? (ev.time[currentLang] || ev.time.en) : '';
+    const time = timeText && timeText.indexOf('[PLACEHOLDER') === -1 ? escapeHTML(timeText) : '';
     const tentative = ev.tentative ? `<p class="event-meta">${markPlaceholders(escapeHTML(t('ui.tentative')))}</p>` : '';
 
     const pick = (field) => (field ? escapeHTML(field[currentLang] || field.en) : '');
@@ -1195,7 +1196,7 @@
     const body = `
         <span class="tag tag--${ev.type}">${escapeHTML(typeLabel)}</span>${todayTag}
         <h3>${title}</h3>
-        <p class="event-meta"><span>${ICON_CAL}${escapeHTML(dateText)}</span><span>${ICON_CLOCK}${time}</span></p>
+        <p class="event-meta"><span>${ICON_CAL}${escapeHTML(dateText)}</span>${time ? `<span>${ICON_CLOCK}${time}</span>` : ''}</p>
         ${tentative}
         <p>${desc}</p>
         ${highlights}${note}${phones}`;

@@ -158,7 +158,6 @@
             </div>
             <div class="program-card-body">
               <p data-i18n="programs.ramayanText">Collective reading of the Ramayan — the sacred story of Shri Ram — recited together in devotion.</p>
-              <span class="program-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="placeholder">[PLACEHOLDER: time]</span></span>
             </div>
           </article>
           <article class="card card--hover program-card" data-reveal style="--reveal-delay:.15s">
@@ -168,7 +167,6 @@
             </div>
             <div class="program-card-body">
               <p data-i18n="programs.bhajansText">An evening of devotional singing with harmonium, dholak, and kartals. Come sing the names of the Divine.</p>
-              <span class="program-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="placeholder">[PLACEHOLDER: time]</span></span>
             </div>
           </article>
           <article class="card card--hover program-card" data-reveal style="--reveal-delay:.25s">
@@ -178,7 +176,6 @@
             </div>
             <div class="program-card-body">
               <p data-i18n="programs.kathaText">Recitation and discourse on sacred scriptures, sharing timeless teachings for everyday life.</p>
-              <span class="program-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="placeholder">[PLACEHOLDER: schedule]</span></span>
             </div>
           </article>
         </div>
@@ -219,7 +216,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero hero--compact" aria-labelledby="hero-title">
       <!-- [REPLACE WITH TEMPLE PHOTO] Swap assets/images/hero.svg for a wide (1600×900+) photo of the temple. -->
-      <img class="hero-bg" src="assets/images/hero.svg" width="1600" height="900" alt="[REPLACE WITH TEMPLE PHOTO] Hero banner of Hari Om Shri Radha Krishna Mandir" fetchpriority="high">
+      <img class="hero-bg" src="assets/images/hero.svg" width="1600" height="900" alt="" aria-hidden="true" fetchpriority="high">
       <div class="hero-overlay" aria-hidden="true"></div>
       <img class="hero-mandala" src="assets/images/mandala.svg" alt="" aria-hidden="true">
       <div class="container hero-content">
@@ -256,11 +253,8 @@
             <span class="icon-badge icon-badge--whatsapp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9.2 8.2c.2 3 2.7 5.6 5.7 6l1.2-1.3 1.9.9c-.2 1.1-1.1 1.9-2.2 1.9A7.4 7.4 0 0 1 8.2 8.3c0-1.1.8-2 1.9-2.2l.9 1.9z"/></svg></span>
             <h3 data-i18n="home.connect.whatsapp">Join Temple WhatsApp</h3>
             <p class="muted" data-i18n="home.connect.whatsappText">Receive announcements about aarti, festivals, and events directly on your phone.</p>
-            <!-- [PLACEHOLDER] Replace href="#" with the WhatsApp group invite link, e.g. https://chat.whatsapp.com/XXXXXXXX -->
-            <div class="connect-actions">
-              <a class="btn btn--whatsapp" href="#" target="_blank" rel="noopener"><span data-i18n="home.connect.whatsappCta">Join WhatsApp Group</span></a>
-            </div>
-            <p class="connect-note"><span class="placeholder">[PLACEHOLDER: WhatsApp group invite link]</span></p>
+            <!-- To add a WhatsApp join button, restore this with the group invite link:
+                 <div class="connect-actions"><a class="btn btn--whatsapp" href="https://chat.whatsapp.com/XXXXXXXX" target="_blank" rel="noopener"><span data-i18n="home.connect.whatsappCta">Join WhatsApp Group</span></a></div> -->
           </article>
           <article class="card card--hover connect-card" data-reveal style="--reveal-delay:.15s">
             <span class="icon-badge icon-badge--lotus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
@@ -276,11 +270,9 @@
             <h3 data-i18n="home.connect.social">Follow Us</h3>
             <p class="muted" data-i18n="home.connect.socialText">Watch bhajans and katha on YouTube and see temple news and photos on Facebook.</p>
             <div class="connect-actions">
-              <!-- [PLACEHOLDER] Replace href="#" with the temple's YouTube channel URL -->
-              <a class="btn btn--youtube" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.3-1.2.4-2.5.4-3.8s-.1-2.6-.4-3.8zM10 15V9l5 3z"/></svg>YouTube<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <!-- To add a YouTube button, restore it here with the channel URL -->
               <a class="btn btn--facebook" href="https://facebook.com/hayward.hindu.temple.2025/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>Facebook<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
-            <p class="connect-note"><span class="placeholder">[PLACEHOLDER: YouTube channel link]</span></p>
           </article>
         </div>
       </div>
@@ -322,9 +314,7 @@
         <p data-i18n="footer.about">A home of devotion to Shri Radha Krishna, serving the Hindu community of Hayward and the East Bay.</p>
         <div class="social-links">
           <a href="https://facebook.com/hayward.hindu.temple.2025/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
-          <!-- [PLACEHOLDER] Replace href="#" with the temple's Instagram / YouTube URLs, or remove these links. -->
-          <a href="#" aria-label="Instagram [PLACEHOLDER link]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="YouTube [PLACEHOLDER link]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.3-1.2.4-2.5.4-3.8s-.1-2.6-.4-3.8z"/><path d="m10 15 5-3-5-3z"/></svg></a>
+          <!-- Add Instagram / YouTube links here when the temple has them -->
         </div>
       </div>
       <div>
@@ -358,7 +348,8 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p><span data-i18n="footer.trustees">Temple Trustees &amp; Management:</span> <span class="placeholder">[PLACEHOLDER: trustee / committee names]</span></p>
+        <!-- Trustees line hidden until names are confirmed. To restore:
+             <p><span data-i18n="footer.trustees">Temple Trustees &amp; Management:</span> Names here</p> -->
         <p>© <span class="js-year">2026</span> <span data-i18n="footer.copyright">Hari Om Shri Radha Krishna Mandir Hayward. All rights reserved.</span></p>
       </div>
     </div>
