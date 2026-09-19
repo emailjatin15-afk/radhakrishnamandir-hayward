@@ -1,0 +1,99 @@
+# Pages CMS configuration (https://pagescms.org)
+# Lets temple volunteers edit the Activities page and the photo gallery from a
+# web form on a phone or laptop, without touching code.
+media:
+  - name: photos
+    label: Temple photos
+    input: assets/images/gallery
+    output: /assets/images/gallery
+    extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: activities
+    label: Activities page
+    path: data/activities.json
+    type: file
+    icon: calendar
+    fields:
+      - name: timings
+        label: Daily timings
+        type: object
+        fields:
+          - { name: note_en, label: Note below the table (English), type: string }
+          - { name: note_hi, label: Note below the table (Hindi), type: string }
+          - name: rows
+            label: Timing rows
+            type: object
+            list: true
+            fields:
+              - { name: label_en, label: Name (English), type: string }
+              - { name: label_hi, label: Name (Hindi), type: string }
+              - { name: time, label: "Time (e.g. 9:00 AM)", type: string }
+      - name: week
+        label: Weekly schedule
+        description: Leave a day's program empty if there is nothing special that day.
+        type: object
+        list: true
+        fields:
+          - name: day
+            label: Day
+            type: select
+            options:
+              values: [sunday, monday, tuesday, wednesday, thursday, friday, saturday]
+          - { name: program_en, label: Program (English), type: string }
+          - { name: program_hi, label: Program (Hindi), type: string }
+      - name: programs
+        label: Weekly program cards
+        type: object
+        list: true
+        fields:
+          - { name: when_en, label: "When (English, e.g. Tuesday)", type: string }
+          - { name: when_hi, label: When (Hindi), type: string }
+          - { name: title_en, label: Title (English), type: string }
+          - { name: title_hi, label: Title (Hindi), type: string }
+          - { name: time, label: "Time (e.g. 7:00 PM)", type: string }
+          - { name: desc_en, label: Description (English), type: text }
+          - { name: desc_hi, label: Description (Hindi), type: text }
+      - { name: services_note_en, label: Note above services (English), type: text }
+      - { name: services_note_hi, label: Note above services (Hindi), type: text }
+      - name: services
+        label: Services
+        type: object
+        list: true
+        fields:
+          - { name: title_en, label: Title (English), type: string }
+          - { name: title_hi, label: Title (Hindi), type: string }
+          - { name: text_en, label: Short description (English), type: text }
+          - { name: text_hi, label: Short description (Hindi), type: text }
+          - { name: items_en, label: "Bullet points (English, one per line)", type: text }
+          - { name: items_hi, label: "Bullet points (Hindi, one per line)", type: text }
+          - { name: link_url, label: "Button link (optional, e.g. donate.html)", type: string, required: false }
+          - { name: link_en, label: Button text (English), type: string, required: false }
+          - { name: link_hi, label: Button text (Hindi), type: string, required: false }
+
+  - name: gallery
+    label: Photo gallery
+    path: data/gallery.json
+    type: file
+    icon: image
+    fields:
+      - { name: note_en, label: Note above the photos (English), type: text }
+      - { name: note_hi, label: Note above the photos (Hindi), type: text }
+      - name: photos
+        label: Photos
+        type: object
+        list: true
+        fields:
+          - { name: file, label: Photo, type: image, media: photos }
+          - { name: caption_en, label: Caption (English), type: string }
+          - { name: caption_hi, label: Caption (Hindi), type: string }
+          - name: category
+            label: Category
+            type: select
+            options:
+              values: [temple, festivals, programs, community]
+          - name: size
+            label: Size in the grid
+            type: select
+            options:
+              values: [normal, wide, tall]

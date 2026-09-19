@@ -19,7 +19,7 @@ It uses plain HTML, CSS, and vanilla JavaScript, with no framework and no build 
 
 ## Preview locally
 
-**Option 1: open the file.** Double-click `index.html`. Everything works from `file://`, including the language toggle, lightbox, events, and forms. The Google Map and web fonts need an internet connection.
+**Option 1: open the file.** Double-click `index.html`. Most of the site works from `file://`, including the language toggle, events, and forms. The Google Map and web fonts need an internet connection. **The Activities page and the Gallery will look empty**, because they load `data/*.json`, which browsers block over `file://` — use Option 2 for those.
 
 **Option 2: run a local server.** This is closer to how the live site behaves. From the project folder, run any one of these:
 
@@ -123,3 +123,29 @@ and restrict the key to your domain in Google Cloud Console.
 - **Breakpoints:** 1024px (hamburger menu), 768px (single column), 480px (compact phone layout).
 - **Accessibility:** skip link, semantic landmarks, `aria-current` on nav, keyboard-operable menu and lightbox (Esc, arrow keys, focus trap), labelled form fields with inline errors, and visible focus rings.
 - **Motion:** scroll animations stay light. They turn off automatically for visitors who set "reduce motion" in their OS.
+
+---
+
+## Updating content without touching code
+
+The **Activities page** and the **photo gallery** are built from data files, so
+volunteers can update them from a web form on a phone or laptop:
+
+| File | Holds |
+|---|---|
+| `data/activities.json` | Aarti/darshan timings, weekly schedule, program cards, services |
+| `data/gallery.json` | Gallery photos, captions, categories, grid sizes |
+
+Each entry stores both languages side by side (`label_en` / `label_hi`), so a change
+is made once, in one place.
+
+**Web form:** `.pages.yml` configures [Pages CMS](https://pagescms.org) — a free
+editor that signs in with GitHub and writes straight back to this repository. Editors
+go to <https://app.pagescms.org>, and photos can be uploaded from a phone into
+`assets/images/gallery/`. Step-by-step instructions for volunteers are in
+[EDITING.md](EDITING.md).
+
+**Without the CMS:** the same two files can be edited on github.com directly.
+
+Content on the other pages still lives in the HTML plus the `TRANSLATIONS` object in
+`js/script.js`, and festival dates still live in the `EVENTS` list there.

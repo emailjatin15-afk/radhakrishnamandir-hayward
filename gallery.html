@@ -83,7 +83,7 @@
 
     <section class="section">
       <div class="container">
-        <p class="text-center muted" style="margin-bottom:24px" data-i18n-html="gallery.note"><span class="placeholder">[REPLACE WITH TEMPLE PHOTOS]</span> Placeholder artwork is shown until real temple photos are added.</p>
+        <p class="text-center muted" style="margin-bottom:24px" id="gallery-note"></p>
 
         <div class="filter-bar" role="group" data-i18n-aria="gallery.filterLabel" aria-label="Filter photos">
           <button class="chip" type="button" data-gallery-filter="all" aria-pressed="true" data-i18n="gallery.filter.all">All</button>
@@ -94,61 +94,13 @@
         </div>
 
         <!--
-          GALLERY ITEMS
-          To add a photo: copy one <button class="gallery-item"> block, point src (thumbnail) and
-          data-full (large version) at your image, set data-category (temple | festivals | programs | community),
-          and write a caption. Add "is-tall" for portrait photos or "is-wide" for panoramas.
-          Recommended: ~800px wide thumbnails (WebP/JPEG) and ~1800px wide full-size images.
+          GALLERY PHOTOS
+          Photos, captions and categories live in data/gallery.json and can be edited
+          from a web form at https://app.pagescms.org (see EDITING.md), or by editing
+          that file directly on GitHub.
         -->
         <div class="gallery-grid" id="gallery-grid">
-          <button class="gallery-item is-wide" type="button" data-category="temple" data-full="assets/images/temple-altar.jpg" data-reveal="zoom">
-            <img src="assets/images/temple-altar.jpg" width="708" height="544" loading="lazy" decoding="async" alt="The decorated altar of the mandir with murtis, peacock feathers, and offerings">
-            <span class="gallery-caption" data-i18n="gallery.altar">Temple Altar</span>
-          </button>
-          <button class="gallery-item is-tall" type="button" data-category="temple" data-full="assets/images/gallery-02.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-02.svg" width="900" height="1200" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Darshan of Shri Radha Krishna">
-            <span class="gallery-caption" data-i18n="gallery.c2">Radha Krishna Darshan</span>
-          </button>
-          <button class="gallery-item" type="button" data-category="programs" data-full="assets/images/gallery-03.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-03.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Evening aarti">
-            <span class="gallery-caption" data-i18n="gallery.c3">Evening Aarti</span>
-          </button>
-          <button class="gallery-item" type="button" data-category="festivals" data-full="assets/images/gallery-04.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-04.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Diwali celebration">
-            <span class="gallery-caption" data-i18n="gallery.c4">Diwali Celebration</span>
-          </button>
-          <button class="gallery-item" type="button" data-category="programs" data-full="assets/images/gallery-05.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-05.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Friday bhajans">
-            <span class="gallery-caption" data-i18n="gallery.c5">Friday Bhajans</span>
-          </button>
-          <button class="gallery-item is-tall" type="button" data-category="programs" data-full="assets/images/gallery-06.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-06.svg" width="900" height="1200" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Tuesday Ramayan Path">
-            <span class="gallery-caption" data-i18n="gallery.c6">Ramayan Path</span>
-          </button>
-          <button class="gallery-item is-wide" type="button" data-category="festivals" data-full="assets/images/gallery-07.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-07.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Holi festival">
-            <span class="gallery-caption" data-i18n="gallery.c7">Holi Festival</span>
-          </button>
-          <button class="gallery-item" type="button" data-category="festivals" data-full="assets/images/gallery-08.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-08.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Janmashtami decorations">
-            <span class="gallery-caption" data-i18n="gallery.c8">Janmashtami Decorations</span>
-          </button>
-          <button class="gallery-item" type="button" data-category="community" data-full="assets/images/gallery-09.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-09.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Community prasad">
-            <span class="gallery-caption" data-i18n="gallery.c9">Community Prasad</span>
-          </button>
-          <button class="gallery-item is-tall" type="button" data-category="festivals" data-full="assets/images/gallery-10.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-10.svg" width="900" height="1200" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Navratri garba">
-            <span class="gallery-caption" data-i18n="gallery.c10">Navratri Garba</span>
-          </button>
-          <button class="gallery-item" type="button" data-category="programs" data-full="assets/images/gallery-11.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-11.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Katha session">
-            <span class="gallery-caption" data-i18n="gallery.c11">Katha Session</span>
-          </button>
-          <button class="gallery-item" type="button" data-category="community" data-full="assets/images/gallery-12.svg" data-reveal="zoom">
-            <img src="assets/images/gallery-12.svg" width="1200" height="900" loading="lazy" decoding="async" alt="[REPLACE WITH TEMPLE PHOTO] Flower offerings">
-            <span class="gallery-caption" data-i18n="gallery.c12">Flower Offerings</span>
-          </button>
+          <noscript><p class="events-empty">Please enable JavaScript to see the photo gallery.</p></noscript>
         </div>
       </div>
     </section>

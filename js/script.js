@@ -1278,37 +1278,188 @@
   }
 
   /* ------------------------------------------------------------------------
-     8. GALLERY FILTERS & LIGHTBOX
+     8. PAGE DATA (data/*.json), ACTIVITIES PAGE & GALLERY
+     ------------------------------------------------------------------------
+     The Activities page and the photo gallery are built from JSON data files
+     so that temple volunteers can update them without touching code:
+       data/activities.json  - timings, weekly schedule, programs, services
+       data/gallery.json     - photos, captions, categories
+     Edit them from a web form at https://app.pagescms.org (see EDITING.md),
+     or directly on GitHub. Each entry holds both languages (_en / _hi).
+     NOTE: these files are fetched over HTTP, so the two pages need a web
+     server (or the live site) - opening the .html file straight from disk
+     will not fill them in. Every other page works from the file system.
      ------------------------------------------------------------------------ */
+  const DATA_CACHE = {};
+  function loadData(file) {
+    if (!DATA_CACHE[file]) {
+      DATA_CACHE[file] = fetch(file, { cache: 'no-cache' })
+        .then((res) => { if (!res.ok) throw new Error(file + ' -> HTTP ' + res.status); return res.json(); })
+        .catch((err) => { console.error('Could not load ' + file, err); return null; });
+    }
+    return DATA_CACHE[file];
+  }
+
+  /* pick(row, 'label') -> row.label_hi in Hindi, falling back to row.label_en */
+  function pick(obj, base) {
+    if (!obj) return '';
+    return obj[base + '_' + currentLang] || obj[base + '_en'] || '';
+  }
+
+  /* Splits a multi-line text field into a list, ignoring blank lines */
+  function toList(text) {
+    return String(text || '').split('\n').map((line) => line.trim()).filter(Boolean);
+  }
+
+  /* Escapes text, then styles any [PLACEHOLDER...] marker */
+  function safeText(value) {
+    return markPlaceholders(escapeHTML(value));
+  }
+
+  const DATA_ERROR = {
+    en: 'This content could not be loaded. Please refresh the page.',
+    hi: 'यह सामग्री लोड नहीं हो सकी। कृपया पृष्ठ पुनः लोड करें।',
+  };
+
+  /* ---- 8a. Activities page ---------------------------------------------- */
+  const DAY_ORDER = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const SERVICE_BADGES = ['', 'icon-badge--lotus', 'icon-badge--teal'];
+  const SERVICE_ICONS = [
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4c2 2.5 2 6 0 9-2-3-2-6.5 0-9z"/><path d="M12 13c-1.5-3-4.5-5-8-5 .5 3.5 3.5 5.5 8 5z"/><path d="M12 13c1.5-3 4.5-5 8-5-.5 3.5-3.5 5.5-8 5z"/><path d="M3 17c3 2 15 2 18 0"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-5.2 1.8L12 16.5l-1.8-5L5 9.7l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>',
+  ];
+
+  function renderActivities(data) {
+    const note = $('#timings-note');
+    if (note) note.textContent = pick(data.timings, 'note');
+
+    const tbody = $('#timings-body');
+    if (tbody && data.timings) {
+      tbody.innerHTML = (data.timings.rows || [])
+        .map((row) => '<tr><td>' + safeText(pick(row, 'label')) + '</td><td>' + safeText(row.time) + '</td></tr>')
+        .join('');
+    }
+
+    const week = $('#week-grid');
+    if (week) {
+      const byDay = {};
+      (data.week || []).forEach((entry) => { byDay[entry.day] = entry; });
+      week.innerHTML = DAY_ORDER.map((day, i) => {
+        const program = pick(byDay[day], 'program');
+        return '<div class="week-day' + (program ? ' has-program' : '') + '" data-day="' + i + '">' +
+          '<h3>' + escapeHTML(t('day.' + day)) + '</h3>' +
+          '<p>' + escapeHTML(t('act.week.daily')) + '</p>' +
+          (program ? '<span class="prog">' + safeText(program) + '</span>' : '') +
+          '</div>';
+      }).join('');
+    }
+
+    const programs = $('#programs-grid');
+    if (programs) {
+      programs.innerHTML = (data.programs || []).map((p, i) =>
+        '<article class="card card--hover program-card" data-reveal style="--reveal-delay:' + (i * 0.07).toFixed(2) + 's">' +
+          '<div class="program-card-top">' +
+            '<span class="program-day">' + safeText(pick(p, 'when')) + '</span>' +
+            '<h3>' + safeText(pick(p, 'title')) + '</h3>' +
+          '</div>' +
+          '<div class="program-card-body">' +
+            '<p>' + safeText(pick(p, 'desc')) + '</p>' +
+            '<span class="program-time">' + ICON_CLOCK + safeText(p.time) + '</span>' +
+          '</div>' +
+        '</article>').join('');
+    }
+
+    const servicesNote = $('#services-note');
+    if (servicesNote) servicesNote.innerHTML = safeText(pick(data, 'services_note'));
+
+    const services = $('#services-grid');
+    if (services) {
+      services.innerHTML = (data.services || []).map((svc, i) => {
+        const items = toList(pick(svc, 'items'));
+        const link = svc.link_url
+          ? '<a class="card-link" href="' + escapeHTML(svc.link_url) + '">' + safeText(pick(svc, 'link')) +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'
+          : '';
+        return '<article class="card card--hover service-card" data-reveal style="--reveal-delay:' + ((i % 3) * 0.07).toFixed(2) + 's">' +
+          '<span class="icon-badge ' + SERVICE_BADGES[i % SERVICE_BADGES.length] + '">' + SERVICE_ICONS[i % SERVICE_ICONS.length] + '</span>' +
+          '<h3>' + safeText(pick(svc, 'title')) + '</h3>' +
+          '<p class="muted">' + safeText(pick(svc, 'text')) + '</p>' +
+          (items.length ? '<ul>' + items.map((item) => '<li>' + safeText(item) + '</li>').join('') + '</ul>' : '') +
+          link +
+        '</article>';
+      }).join('');
+    }
+
+    observeReveal();
+    updateTodayInfo(); // re-applies the "Today" highlight to the new week cells
+  }
+
+  function initActivities() {
+    if (!$('#timings-body') && !$('#programs-grid') && !$('#services-grid')) return;
+    loadData('data/activities.json').then((data) => {
+      if (!data) {
+        const grid = $('#services-grid') || $('#programs-grid');
+        if (grid) grid.innerHTML = '<p class="events-empty">' + escapeHTML(DATA_ERROR[currentLang] || DATA_ERROR.en) + '</p>';
+        return;
+      }
+      renderActivities(data);
+      document.addEventListener('temple:languagechange', () => renderActivities(data));
+    });
+  }
+
+  /* ---- 8b. Gallery: photos, filters & lightbox --------------------------- */
   function initGallery() {
     const grid = $('#gallery-grid');
     if (!grid) return;
-    const items = $$('.gallery-item', grid);
+    let filter = 'all';
+
+    function applyFilter() {
+      $$('.gallery-item', grid).forEach((item) => {
+        item.hidden = !(filter === 'all' || item.dataset.category === filter);
+        if (!item.hidden) item.classList.add('is-visible');
+      });
+    }
+
+    function renderPhotos(data) {
+      const note = $('#gallery-note');
+      if (note) note.innerHTML = safeText(pick(data, 'note'));
+      grid.innerHTML = (data.photos || []).map((photo, i) => {
+        const caption = escapeHTML(pick(photo, 'caption'));
+        const size = photo.size === 'wide' ? ' is-wide' : (photo.size === 'tall' ? ' is-tall' : '');
+        return '<button class="gallery-item' + size + '" type="button"' +
+          ' data-category="' + escapeHTML(photo.category || 'temple') + '"' +
+          ' data-full="' + escapeHTML(photo.full || photo.file) + '"' +
+          ' data-reveal="zoom" style="--reveal-delay:' + ((i % 6) * 0.05).toFixed(2) + 's">' +
+          '<img src="' + escapeHTML(photo.file) + '" loading="lazy" decoding="async" alt="' + caption + '">' +
+          '<span class="gallery-caption">' + caption + '</span>' +
+        '</button>';
+      }).join('');
+      applyFilter();
+      observeReveal(grid);
+    }
 
     $$('[data-gallery-filter]').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const f = btn.dataset.galleryFilter;
+        filter = btn.dataset.galleryFilter;
         $$('[data-gallery-filter]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-        items.forEach((item) => {
-          item.hidden = !(f === 'all' || item.dataset.category === f);
-          if (!item.hidden) item.classList.add('is-visible');
-        });
+        applyFilter();
       });
     });
 
     const box = $('#lightbox');
-    if (!box) return;
-    const img = $('.lightbox-img', box);
-    const titleEl = $('.lightbox-title', box);
-    const countEl = $('.lightbox-count', box);
-    const btnClose = $('.lightbox-close', box);
-    const btnPrev = $('.lightbox-prev', box);
-    const btnNext = $('.lightbox-next', box);
+    const img = box && $('.lightbox-img', box);
+    const titleEl = box && $('.lightbox-title', box);
+    const countEl = box && $('.lightbox-count', box);
+    const btnClose = box && $('.lightbox-close', box);
+    const btnPrev = box && $('.lightbox-prev', box);
+    const btnNext = box && $('.lightbox-next', box);
     let visible = [];
     let index = 0;
     let lastFocus = null;
 
     function show(i) {
+      if (!visible.length) return;
       index = (i + visible.length) % visible.length;
       const item = visible[index];
       const thumb = $('img', item);
@@ -1324,7 +1475,7 @@
     }
 
     function open(item) {
-      visible = items.filter((it) => !it.hidden);
+      visible = $$('.gallery-item', grid).filter((it) => !it.hidden);
       lastFocus = document.activeElement;
       show(visible.indexOf(item));
       box.classList.add('is-open');
@@ -1341,35 +1492,54 @@
       if (lastFocus) lastFocus.focus();
     }
 
-    items.forEach((item) => item.addEventListener('click', () => open(item)));
-    btnClose.addEventListener('click', close);
-    btnPrev.addEventListener('click', () => show(index - 1));
-    btnNext.addEventListener('click', () => show(index + 1));
-    box.addEventListener('click', (e) => { if (e.target === box) close(); });
+    if (box) {
+      // One delegated listener, so photos rendered later still open the lightbox
+      grid.addEventListener('click', (e) => {
+        const item = e.target.closest('.gallery-item');
+        if (item && !item.hidden) open(item);
+      });
+      btnClose.addEventListener('click', close);
+      btnPrev.addEventListener('click', () => show(index - 1));
+      btnNext.addEventListener('click', () => show(index + 1));
+      box.addEventListener('click', (e) => { if (e.target === box) close(); });
 
-    document.addEventListener('keydown', (e) => {
-      if (!box.classList.contains('is-open')) return;
-      if (e.key === 'Escape') close();
-      else if (e.key === 'ArrowLeft') show(index - 1);
-      else if (e.key === 'ArrowRight') show(index + 1);
-      else if (e.key === 'Tab') {
-        const f = [btnClose, btnPrev, btnNext];
-        const pos = f.indexOf(document.activeElement);
-        e.preventDefault();
-        f[(pos + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+      document.addEventListener('keydown', (e) => {
+        if (!box.classList.contains('is-open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') show(index - 1);
+        else if (e.key === 'ArrowRight') show(index + 1);
+        else if (e.key === 'Tab') {
+          const f = [btnClose, btnPrev, btnNext];
+          const pos = f.indexOf(document.activeElement);
+          e.preventDefault();
+          f[(pos + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+        }
+      });
+
+      let touchX = null;
+      box.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].clientX; }, { passive: true });
+      box.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+        touchX = null;
+      });
+    }
+
+    loadData('data/gallery.json').then((data) => {
+      if (!data) {
+        grid.innerHTML = '<p class="events-empty">' + escapeHTML(DATA_ERROR[currentLang] || DATA_ERROR.en) + '</p>';
+        return;
       }
+      renderPhotos(data);
+      document.addEventListener('temple:languagechange', () => {
+        renderPhotos(data);
+        if (box && box.classList.contains('is-open')) {
+          visible = $$('.gallery-item', grid).filter((it) => !it.hidden);
+          show(index);
+        }
+      });
     });
-
-    let touchX = null;
-    box.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].clientX; }, { passive: true });
-    box.addEventListener('touchend', (e) => {
-      if (touchX === null) return;
-      const dx = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
-      touchX = null;
-    });
-
-    document.addEventListener('temple:languagechange', () => { if (box.classList.contains('is-open')) show(index); });
   }
 
   /* ------------------------------------------------------------------------
@@ -1634,6 +1804,7 @@
     initToday();
     initEvents();
     initGallery();
+    initActivities();
     initDonationForm();
     initContactForm();
     initLanguage();   // after components so they re-render in the saved language

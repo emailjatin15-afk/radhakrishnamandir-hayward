@@ -1,0 +1,106 @@
+{
+  "timings": {
+    "note_en": "The temple is open daily, 8:00 AM – 8:00 PM.",
+    "note_hi": "मंदिर प्रतिदिन सुबह 8:00 से रात 8:00 बजे तक खुला रहता है।",
+    "rows": [
+      { "label_en": "Temple Opens", "label_hi": "मंदिर खुलता है", "time": "8:00 AM" },
+      { "label_en": "Morning Aarti", "label_hi": "प्रातः आरती", "time": "9:00 AM" },
+      { "label_en": "Darshan", "label_hi": "दर्शन", "time": "8:00 AM – 8:00 PM" },
+      { "label_en": "Sandhya (Evening) Aarti", "label_hi": "संध्या आरती", "time": "8:00 PM" },
+      { "label_en": "Temple Closes", "label_hi": "मंदिर बंद होता है", "time": "8:00 PM" }
+    ]
+  },
+  "week": [
+    { "day": "sunday", "program_en": "", "program_hi": "" },
+    { "day": "monday", "program_en": "", "program_hi": "" },
+    { "day": "tuesday", "program_en": "Ramayan Path", "program_hi": "रामायण पाठ" },
+    { "day": "wednesday", "program_en": "", "program_hi": "" },
+    { "day": "thursday", "program_en": "", "program_hi": "" },
+    { "day": "friday", "program_en": "Bhajans & Kirtans", "program_hi": "भजन और कीर्तन" },
+    { "day": "saturday", "program_en": "", "program_hi": "" }
+  ],
+  "programs": [
+    {
+      "when_en": "Tuesday",
+      "when_hi": "मंगलवार",
+      "title_en": "Ramayan Path",
+      "title_hi": "रामायण पाठ",
+      "time": "[PLACEHOLDER: time]",
+      "desc_en": "Devotees gather to read the Ramayan together — verse by verse — reflecting on the ideals of dharma, devotion, and duty lived by Shri Ram, Mata Sita, Lakshman, and Hanuman. Readers of all levels are welcome to join or simply listen.",
+      "desc_hi": "भक्त मिलकर रामायण का पाठ करते हैं — चौपाई दर चौपाई — और श्री राम, माता सीता, लक्ष्मण और हनुमान जी द्वारा जिए गए धर्म, भक्ति और कर्तव्य के आदर्शों पर मनन करते हैं। हर स्तर के पाठक शामिल हो सकते हैं या केवल श्रवण कर सकते हैं।"
+    },
+    {
+      "when_en": "Friday",
+      "when_hi": "शुक्रवार",
+      "title_en": "Bhajans & Kirtans",
+      "title_hi": "भजन और कीर्तन",
+      "time": "[PLACEHOLDER: time]",
+      "desc_en": "Friday evenings fill the mandir with music. Sing along to traditional bhajans and call-and-response kirtans in praise of Radha Krishna, Shri Ram, Shiva, and the Divine Mother. Musicians and singers are welcome to participate.",
+      "desc_hi": "शुक्रवार की संध्या मंदिर संगीत से गूँज उठता है। राधा कृष्ण, श्री राम, शिव और जगदंबा की स्तुति में पारंपरिक भजन और कीर्तन मिलकर गाएँ। संगीतकारों और गायकों का स्वागत है।"
+    },
+    {
+      "when_en": "Regular Sessions",
+      "when_hi": "नियमित सत्र",
+      "title_en": "Katha",
+      "title_hi": "कथा",
+      "time": "[PLACEHOLDER: schedule]",
+      "desc_en": "Katha sessions bring the scriptures to life through recitation and discourse — stories from the Bhagavat Puran, Ramayan, and Bhagavad Gita, explained for modern life and followed by aarti and prasad.",
+      "desc_hi": "कथा सत्रों में पाठ और प्रवचन के माध्यम से शास्त्र जीवंत हो उठते हैं — भागवत पुराण, रामायण और भगवद्गीता की कथाएँ, आधुनिक जीवन के संदर्भ में, जिसके बाद आरती और प्रसाद होता है।"
+    }
+  ],
+  "services_note_en": "Services listed are examples. [PLACEHOLDER: confirm services offered, availability, and suggested dakshina]",
+  "services_note_hi": "सूचीबद्ध सेवाएँ उदाहरण मात्र हैं। [PLACEHOLDER: confirm services offered, availability, and suggested dakshina]",
+  "services": [
+    {
+      "title_en": "Pujas & Archana",
+      "title_hi": "पूजा और अर्चना",
+      "text_en": "Personal and family pujas performed at the mandir.",
+      "text_hi": "मंदिर में संपन्न होने वाली व्यक्तिगत और पारिवारिक पूजाएँ।",
+      "items_en": "Satyanarayan Katha & Puja\nGanesh & Lakshmi Puja\nArchana & special aarti\n[PLACEHOLDER: other pujas]",
+      "items_hi": "सत्यनारायण कथा और पूजा\nगणेश और लक्ष्मी पूजा\nअर्चना और विशेष आरती\n[PLACEHOLDER: other pujas]"
+    },
+    {
+      "title_en": "Samskaras & Ceremonies",
+      "title_hi": "संस्कार और अनुष्ठान",
+      "text_en": "Sacred rites for life's milestones, at the temple or at home.",
+      "text_hi": "जीवन के महत्वपूर्ण पड़ावों के पवित्र संस्कार, मंदिर में या घर पर।",
+      "items_en": "Namkaran (naming ceremony)\nAnnaprashan & Mundan\nVivah (wedding) ceremonies\nGriha Pravesh (housewarming)",
+      "items_hi": "नामकरण संस्कार\nअन्नप्राशन और मुंडन\nविवाह संस्कार\nगृह प्रवेश"
+    },
+    {
+      "title_en": "Community Services",
+      "title_hi": "सामुदायिक सेवाएँ",
+      "text_en": "Ways the mandir brings people together beyond worship.",
+      "text_hi": "पूजा से आगे बढ़कर मंदिर लोगों को जोड़ने के तरीके।",
+      "items_en": "Prasad & community meals\nFestival volunteering (seva)\n[PLACEHOLDER: classes for children — e.g., Hindi, shlokas, bhajans]\n[PLACEHOLDER: outreach / charitable programs]",
+      "items_hi": "प्रसाद और सामुदायिक भोजन\nत्योहारों में स्वयंसेवा (सेवा)\n[PLACEHOLDER: classes for children — e.g., Hindi, shlokas, bhajans]\n[PLACEHOLDER: outreach / charitable programs]"
+    },
+    {
+      "title_en": "Sponsorships",
+      "title_hi": "प्रायोजन",
+      "text_en": "Sponsor an aarti, bhog offering, or festival in honor or memory of a loved one.",
+      "text_hi": "किसी प्रियजन के सम्मान या स्मृति में आरती, भोग या त्योहार प्रायोजित करें।",
+      "items_en": "",
+      "items_hi": "",
+      "link_url": "donate.html",
+      "link_en": "Give now",
+      "link_hi": "अभी दान करें"
+    },
+    {
+      "title_en": "Path & Recitations",
+      "title_hi": "पाठ और स्तुति",
+      "text_en": "Arrange a Ramayan Path, Sundarkand, Hanuman Chalisa, or Gita recitation for a special occasion.",
+      "text_hi": "विशेष अवसर के लिए रामायण पाठ, सुंदरकांड, हनुमान चालीसा या गीता पाठ का आयोजन करें।",
+      "items_en": "[PLACEHOLDER: booking details]",
+      "items_hi": "[PLACEHOLDER: booking details]"
+    },
+    {
+      "title_en": "Home Visits by Pujari",
+      "title_hi": "घर पर पुजारी सेवा",
+      "text_en": "Request a priest for pujas and ceremonies at your home.",
+      "text_hi": "अपने घर पर पूजा और संस्कारों के लिए पुजारी जी को आमंत्रित करें।",
+      "items_en": "[PLACEHOLDER: service area & availability]",
+      "items_hi": "[PLACEHOLDER: service area & availability]"
+    }
+  ]
+}

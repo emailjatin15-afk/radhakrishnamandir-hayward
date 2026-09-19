@@ -1,0 +1,18 @@
+{
+  "note_en": "[REPLACE WITH TEMPLE PHOTOS] Placeholder artwork is shown until real temple photos are added.",
+  "note_hi": "[REPLACE WITH TEMPLE PHOTOS] मंदिर की वास्तविक तस्वीरें जोड़े जाने तक प्रतीकात्मक चित्र दिखाए जा रहे हैं।",
+  "photos": [
+    { "file": "assets/images/temple-altar.jpg", "caption_en": "Temple Altar", "caption_hi": "मंदिर का पूजा स्थल", "category": "temple", "size": "wide" },
+    { "file": "assets/images/gallery-02.svg", "caption_en": "Radha Krishna Darshan", "caption_hi": "राधा कृष्ण दर्शन", "category": "temple", "size": "tall" },
+    { "file": "assets/images/gallery-03.svg", "caption_en": "Evening Aarti", "caption_hi": "संध्या आरती", "category": "programs", "size": "normal" },
+    { "file": "assets/images/gallery-04.svg", "caption_en": "Diwali Celebration", "caption_hi": "दीपावली उत्सव", "category": "festivals", "size": "normal" },
+    { "file": "assets/images/gallery-05.svg", "caption_en": "Friday Bhajans", "caption_hi": "शुक्रवार भजन", "category": "programs", "size": "normal" },
+    { "file": "assets/images/gallery-06.svg", "caption_en": "Ramayan Path", "caption_hi": "रामायण पाठ", "category": "programs", "size": "tall" },
+    { "file": "assets/images/gallery-07.svg", "caption_en": "Holi Festival", "caption_hi": "होली उत्सव", "category": "festivals", "size": "wide" },
+    { "file": "assets/images/gallery-08.svg", "caption_en": "Janmashtami Decorations", "caption_hi": "जन्माष्टमी सजावट", "category": "festivals", "size": "normal" },
+    { "file": "assets/images/gallery-09.svg", "caption_en": "Community Prasad", "caption_hi": "सामुदायिक प्रसाद", "category": "community", "size": "normal" },
+    { "file": "assets/images/gallery-10.svg", "caption_en": "Navratri Garba", "caption_hi": "नवरात्रि गरबा", "category": "festivals", "size": "tall" },
+    { "file": "assets/images/gallery-11.svg", "caption_en": "Katha Session", "caption_hi": "कथा सत्र", "category": "programs", "size": "normal" },
+    { "file": "assets/images/gallery-12.svg", "caption_en": "Flower Offerings", "caption_hi": "पुष्प अर्पण", "category": "community", "size": "normal" }
+  ]
+}
