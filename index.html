@@ -77,7 +77,7 @@
         </div>
         <div data-reveal="right">
           <p class="eyebrow" data-i18n="home.welcome.eyebrow">Welcome</p>
-          <h2 data-i18n="home.welcome.title">A Spiritual Home for Every Devotee</h2>
+          <h1 data-i18n="home.welcome.title">A Spiritual Home for Every Devotee</h1>
           <span class="divider" style="margin-left:0" aria-hidden="true"></span>
           <p data-i18n="home.welcome.p1">Hari Om Shri Radha Krishna Mandir — known locally as the Hayward Hindu Temple — is a place of prayer, peace, and togetherness. With Shri Radha Krishna as our presiding deities, the mandir serves the wider Hindu community of Hayward and the East Bay.</p>
           <p data-i18n="home.welcome.p2">Our mission is simple: to keep the lamp of devotion burning through daily worship, scripture, bhajans, and seva — and to offer families a place where our traditions are lived, celebrated, and passed on.</p>
@@ -122,21 +122,6 @@
             <a class="card-link" href="activities.html"><span data-i18n="glance.fullSchedule">See full schedule</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ UPCOMING EVENTS PREVIEW (rendered from EVENTS data in js/script.js) ============ -->
-    <section section--tint class="section section--tint">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="home.upcoming.eyebrow">Celebrate Together</p>
-          <h2 id="home-upcoming-title" data-i18n="home.upcoming.title">Upcoming Festivals</h2>
-          <span class="divider" aria-hidden="true"></span>
-        </div>
-        <div class="event-grid event-grid--compact" id="home-events" data-limit="4" data-compact>
-          <noscript><p class="events-empty">Please enable JavaScript to see upcoming events, or call (650) 245-9500.</p></noscript>
-        </div>
-        <p class="text-center" style="margin-top:36px"><a class="btn" href="events.html" data-i18n="home.upcoming.cta">See All Events</a></p>
       </div>
     </section>
 
@@ -236,6 +221,21 @@
       </div>
     </section>
 
+    <!-- ============ UPCOMING EVENTS PREVIEW (rendered from EVENTS data in js/script.js) ============ -->
+    <section section--tint class="section section--tint">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="home.upcoming.eyebrow">Celebrate Together</p>
+          <h2 id="home-upcoming-title" data-i18n="home.upcoming.title">Upcoming Festivals</h2>
+          <span class="divider" aria-hidden="true"></span>
+        </div>
+        <div class="event-grid event-grid--compact" id="home-events" data-limit="4" data-compact>
+          <noscript><p class="events-empty">Please enable JavaScript to see upcoming events, or call (650) 245-9500.</p></noscript>
+        </div>
+        <p class="text-center" style="margin-top:36px"><a class="btn" href="events.html" data-i18n="home.upcoming.cta">See All Events</a></p>
+      </div>
+    </section>
+
     <!-- ============ QUICK LINKS ============ -->
     <section section--tint class="section section--tint">
       <div class="container">
@@ -267,33 +267,8 @@
       </div>
     </section>
 
-    <!-- ============ HERO ============ -->
-    <section class="hero hero--compact" aria-labelledby="hero-title">
-      <!-- [REPLACE WITH TEMPLE PHOTO] Swap assets/images/hero.svg for a wide (1600×900+) photo of the temple. -->
-      <img class="hero-bg" src="assets/images/hero.svg" width="1600" height="900" alt="" aria-hidden="true" fetchpriority="high">
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <img class="hero-mandala" src="assets/images/mandala.svg" alt="" aria-hidden="true">
-      <div class="container hero-content">
-        <span class="om" aria-hidden="true">ॐ</span>
-        <p class="eyebrow" data-i18n="home.hero.eyebrow">Hayward Hindu Temple</p>
-        <h1 id="hero-title"><span data-i18n="home.hero.title">Hari Om Shri Radha Krishna Mandir</span><span class="accent" data-i18n="home.hero.place">Hayward, California</span></h1>
-        <p class="hero-tagline" data-i18n="home.hero.tagline">A sacred home of devotion, seva, and community — where every visitor is welcomed with the love of Shri Radha Krishna.</p>
-        <div class="hero-actions">
-          <a class="btn btn--saffron" href="contact.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            <span data-i18n="home.hero.cta1">Plan Your Visit</span>
-          </a>
-          <a class="btn btn--light" href="events.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
-            <span data-i18n="home.hero.cta2">Upcoming Events</span>
-          </a>
-        </div>
-      </div>
-      <img class="hero-silhouette" src="assets/images/temple-silhouette.svg" alt="" aria-hidden="true">
-    </section>
-
     <!-- ============ CTA ============ -->
-    <section class="section section--maroon section--tight">
+    <section class="section section--tint section--maroon section--tight">
       <img class="ornament-mandala ornament-mandala--bl" src="assets/images/mandala.svg" alt="" aria-hidden="true">
       <div class="container cta-banner" data-reveal>
         <div>
@@ -306,6 +281,9 @@
         </div>
       </div>
     </section>
+    <!-- The hero banner was removed from this page on request.
+         Its markup is kept in snippets/home-hero.html -->
+
   </main>
 
   <!-- ============ BLESSING STRIP (shared across pages) ============ -->

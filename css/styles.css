@@ -65,7 +65,7 @@
   --container: 1180px;
   --gutter: clamp(16px, 4vw, 32px);
   --header-h: 76px;
-  --section-pad: clamp(56px, 8vw, 104px);
+  --section-pad: clamp(34px, 4.4vw, 64px);
 
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -76,6 +76,8 @@
 *::after { box-sizing: border-box; }
 
 html {
+  /* Larger base size so every rem-based size scales with it (18px phone - 20px desktop) */
+  font-size: clamp(18px, 0.35vw + 16.6px, 20px);
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 16px);
   -webkit-text-size-adjust: 100%;
@@ -84,8 +86,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--ink);
   background-color: var(--cream);
   text-rendering: optimizeLegibility;
@@ -164,8 +166,8 @@ h1, h2, h3, h4 {
 }
 h1 { font-size: clamp(2.3rem, 5.4vw, 4.2rem); }
 h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
-h3 { font-size: clamp(1.35rem, 2.2vw, 1.65rem); }
-h4 { font-size: 1.2rem; }
+h3 { font-size: clamp(1.45rem, 2.3vw, 1.8rem); }
+h4 { font-size: 1.32rem; }
 
 html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4 {
   font-family: "Tiro Devanagari Hindi", var(--font-display);
@@ -184,9 +186,9 @@ p:last-child { margin-bottom: 0; }
   gap: 10px;
   margin-bottom: 10px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--saffron-deep);
 }
@@ -200,7 +202,7 @@ p:last-child { margin-bottom: 0; }
 }
 html[lang="hi"] .eyebrow { letter-spacing: 0.04em; font-size: 0.95rem; }
 
-.lead { font-size: clamp(1.1rem, 1.6vw, 1.25rem); color: var(--ink-soft); }
+.lead { font-size: clamp(1.2rem, 1.7vw, 1.4rem); color: var(--ink-soft); }
 .text-center { text-align: center; }
 .muted { color: var(--ink-soft); }
 
@@ -242,8 +244,8 @@ html[lang="hi"] .eyebrow { letter-spacing: 0.04em; font-size: 0.95rem; }
   background: var(--btn-bg);
   color: var(--cream);
   font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.2;
+  font-size: 1.1rem;
+  line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
@@ -314,9 +316,9 @@ html[lang="hi"] .eyebrow { letter-spacing: 0.04em; font-size: 0.95rem; }
   display: inline-block;
   padding: 2px 12px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   background: var(--cream-2);
   color: var(--maroon);
 }
@@ -328,7 +330,7 @@ html[lang="hi"] .eyebrow { letter-spacing: 0.04em; font-size: 0.95rem; }
 .topbar {
   background: var(--maroon-deep);
   color: var(--gold-pale);
-  font-size: 0.88rem;
+  font-size: 1rem;
 }
 .topbar .container {
   display: flex;
@@ -400,8 +402,8 @@ html[lang="hi"] .eyebrow { letter-spacing: 0.04em; font-size: 0.95rem; }
   white-space: nowrap;
 }
 .brand-sub {
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
+  font-size: 0.84rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--saffron-deep);
   font-weight: 600;
@@ -427,7 +429,7 @@ html[lang="hi"] .brand-sub { letter-spacing: 0.02em; font-size: 0.8rem; }
   padding: 10px 12px;
   color: var(--ink);
   font-weight: 500;
-  font-size: 0.98rem;
+  font-size: 1.06rem;
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: color 0.2s;
@@ -631,7 +633,7 @@ html[lang="hi"] .brand-sub { letter-spacing: 0.02em; font-size: 0.8rem; }
   margin: 0 0 12px;
   padding: 0;
   list-style: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--gold-pale);
 }
 .breadcrumb a { color: var(--gold-pale); }
@@ -652,7 +654,7 @@ html[lang="hi"] .brand-sub { letter-spacing: 0.02em; font-size: 0.8rem; }
 /* 8. Sections & ornaments ----------------------------------------------- */
 /* overflow-x: clip keeps corner ornaments from widening the page without breaking position: sticky */
 .section { position: relative; padding-block: var(--section-pad); overflow-x: clip; }
-.section--tight { padding-block: clamp(40px, 5vw, 64px); }
+.section--tight { padding-block: clamp(24px, 3.2vw, 42px); }
 
 .section--tint {
   background-color: var(--cream-2);
@@ -688,7 +690,7 @@ html[lang="hi"] .brand-sub { letter-spacing: 0.02em; font-size: 0.8rem; }
 
 .section-head {
   max-width: 760px;
-  margin: 0 auto clamp(36px, 5vw, 56px);
+  margin: 0 auto clamp(20px, 2.8vw, 34px);
   text-align: center;
 }
 .section-head--left { margin-inline: 0; text-align: left; }
@@ -836,7 +838,7 @@ a.card:hover .card-link svg { transform: translateX(4px); }
   padding: 4px 14px;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   background: rgba(255, 248, 238, 0.12);
   border: 1px solid rgba(232, 198, 106, 0.6);
 }
@@ -857,7 +859,7 @@ a.card:hover .card-link svg { transform: translateX(4px); }
   line-height: 1.2;
   color: var(--gold-light);
 }
-.glance-status .muted { color: #efd4b8; font-size: 0.95rem; }
+.glance-status .muted { color: #efd4b8; font-size: 1.05rem; }
 
 .timing-list { list-style: none; margin: 0; padding: 0; }
 .timing-list li {
@@ -878,7 +880,7 @@ a.card:hover .card-link svg { transform: translateX(4px); }
   background: linear-gradient(135deg, #fff3dd, var(--lotus-soft));
   border: 1px solid #f0c9a8;
 }
-.today-program .day { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--lotus); font-weight: 700; }
+.today-program .day { font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--lotus); font-weight: 700; }
 .today-program .name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--maroon); line-height: 1.25; margin: 4px 0; }
 html[lang="hi"] .today-program .name { font-family: "Tiro Devanagari Hindi", serif; font-weight: 400; }
 
@@ -918,9 +920,9 @@ html[lang="hi"] .today-program .name { font-family: "Tiro Devanagari Hindi", ser
   border-radius: 999px;
   background: rgba(255, 248, 238, 0.18);
   border: 1px solid rgba(255, 248, 238, 0.45);
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 html[lang="hi"] .program-day { letter-spacing: 0.02em; font-size: 0.9rem; }
@@ -983,7 +985,7 @@ html[lang="hi"] .welcome-quote { font-family: "Tiro Devanagari Hindi", serif; fo
 .deity-card:hover img { transform: scale(1.05); }
 .deity-card-body { padding: 20px 20px 24px; border-top: 3px solid var(--gold-light); }
 .deity-card-body h3 { margin-bottom: 0.2em; }
-.deity-card-body p { font-size: 0.97rem; color: var(--ink-soft); }
+.deity-card-body p { font-size: 1.06rem; color: var(--ink-soft); }
 
 /* Values */
 .value-card { text-align: left; }
@@ -1015,7 +1017,7 @@ html[lang="hi"] .guru-name { font-family: "Tiro Devanagari Hindi", serif; font-w
 .connect-card .icon-badge svg { width: 32px; height: 32px; }
 .connect-card p { flex: 1; }
 .connect-card .connect-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
-.connect-card .connect-note { flex: none; margin: 10px 0 0; font-size: 0.85rem; }
+.connect-card .connect-note { flex: none; margin: 10px 0 0; font-size: 0.95rem; }
 .icon-badge--whatsapp { color: #0f7a41; background: radial-gradient(circle at 35% 30%, #f3fbf6, #d7f2e1); border-color: #9fd9b5; }
 .btn--whatsapp { --btn-bg: linear-gradient(135deg, #0f7a41, #0b5e32); }
 .btn--youtube { --btn-bg: linear-gradient(135deg, #c62828, #8e1616); }
@@ -1054,7 +1056,7 @@ html[lang="hi"] .guru-name { font-family: "Tiro Devanagari Hindi", serif; font-w
 /* Timings table */
 .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid rgba(201, 150, 43, 0.45); background: var(--white); box-shadow: var(--shadow-sm); }
 .timings-table { width: 100%; border-collapse: collapse; }
-.timings-table caption { text-align: left; padding: 16px 20px 0; color: var(--ink-soft); font-size: 0.92rem; caption-side: bottom; padding-bottom: 16px; }
+.timings-table caption { text-align: left; padding: 16px 20px 0; color: var(--ink-soft); font-size: 0.92rem; caption-side: bottom; padding-bottom: 16px; font-size: 1.02rem; }
 .timings-table th,
 .timings-table td { padding: 14px 20px; text-align: left; border-bottom: 1px solid rgba(201, 150, 43, 0.25); }
 .timings-table thead th {
@@ -1079,7 +1081,7 @@ html[lang="hi"] .guru-name { font-family: "Tiro Devanagari Hindi", serif; font-w
   transition: box-shadow 0.3s, border-color 0.3s;
 }
 .week-day h3 { font-size: 1.1rem; margin-bottom: 8px; }
-.week-day p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
+.week-day p { font-size: 1rem; color: var(--ink-soft); line-height: 1.5; }
 .week-day.has-program { background: linear-gradient(180deg, #fff5e3, var(--white)); border-color: var(--gold); }
 .week-day .prog { display: block; margin-top: 6px; font-weight: 600; color: var(--maroon); font-size: 0.95rem; line-height: 1.35; }
 .week-day.is-today { box-shadow: 0 0 0 2px var(--saffron), var(--shadow-sm); }
@@ -1131,7 +1133,7 @@ html[lang="hi"] .guru-name { font-family: "Tiro Devanagari Hindi", serif; font-w
 .event-date .w { display: block; padding-bottom: 6px; font-size: 0.75rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; }
 .event-body { flex: 1; min-width: 0; }
 .event-body h3 { font-size: 1.4rem; margin: 6px 0 4px; }
-.event-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 8px; font-size: 0.92rem; color: var(--ink-soft); }
+.event-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 8px; font-size: 1.02rem; color: var(--ink-soft); }
 .event-meta span { display: inline-flex; align-items: center; gap: 6px; }
 .event-meta svg { width: 15px; height: 15px; color: var(--saffron); }
 .event-body p { font-size: 0.98rem; }
@@ -1345,8 +1347,8 @@ html[lang="hi"] .info-list strong { font-family: "Tiro Devanagari Hindi", serif;
 .field.has-error input,
 .field.has-error select,
 .field.has-error textarea { border-color: #b3261e; }
-.field-hint { font-size: 0.88rem; color: var(--ink-soft); }
-.field-error { font-size: 0.88rem; color: #a3231b; font-weight: 500; min-height: 0; }
+.field-hint { font-size: 0.98rem; color: var(--ink-soft); }
+.field-error { font-size: 0.98rem; color: #a3231b; font-weight: 500; min-height: 0; }
 .field-error:empty { display: none; }
 
 fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
@@ -1382,7 +1384,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   transition: border-color 0.2s, box-shadow 0.25s, transform 0.25s var(--ease), background 0.2s;
 }
 .tier .amt { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--maroon); line-height: 1.1; }
-.tier .lbl { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.3; }
+.tier .lbl { font-size: 0.94rem; color: var(--ink-soft); line-height: 1.3; }
 .tier label:hover { border-color: var(--saffron); transform: translateY(-2px); }
 .tier input:checked + label {
   border-color: var(--maroon);
@@ -1427,7 +1429,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
 .donate-layout { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(24px, 4vw, 44px); align-items: start; }
 .donate-aside { display: grid; gap: 20px; position: sticky; top: calc(var(--header-h) + 24px); }
-.secure-note { display: flex; align-items: center; gap: 8px; justify-content: center; margin-top: 12px; font-size: 0.88rem; color: var(--ink-soft); }
+.secure-note { display: flex; align-items: center; gap: 8px; justify-content: center; margin-top: 12px; font-size: 0.98rem; color: var(--ink-soft); }
 .secure-note svg { width: 16px; height: 16px; }
 
 .impact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
@@ -1484,7 +1486,7 @@ html[lang="hi"] .blessing-strip a { font-family: "Tiro Devanagari Hindi", serif;
   background:
     radial-gradient(ellipse at 100% 0%, rgba(232, 117, 10, 0.18), transparent 45%),
     linear-gradient(180deg, var(--maroon-deep), #2b070a);
-  font-size: 0.97rem;
+  font-size: 1.08rem;
 }
 .site-footer::before {
   content: "";
@@ -1541,7 +1543,7 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
   position: relative;
   border-top: 1px solid rgba(232, 198, 106, 0.22);
   padding-block: 20px 26px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #d9bfa3;
 }
 .footer-bottom .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
@@ -1639,7 +1641,7 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
 
 /* 14. Responsive -------------------------------------------------------- */
 @media (max-width: 1180px) {
-  .nav-link { padding: 10px 9px; font-size: 0.95rem; }
+  .nav-link { padding: 10px 8px; font-size: 1rem; }
   .brand-name { font-size: 1.15rem; }
 }
 
@@ -1694,7 +1696,6 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
 }
 
 @media (max-width: 768px) {
-  body { font-size: 1rem; }
   .topbar-group--secondary { display: none; }
   .topbar .container { justify-content: center; }
 
@@ -1729,9 +1730,9 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
   .brand-mark { width: 40px; height: 40px; }
   .brand-mark svg { width: 24px; height: 24px; }
   .brand-name { font-size: 1rem; white-space: normal; }
-  .brand-sub { font-size: 0.66rem; letter-spacing: 0.08em; }
+  .brand-sub { font-size: 0.78rem; letter-spacing: 0.06em; }
   .header-inner { gap: 10px; }
-  .lang-toggle { width: 82px; height: 36px; font-size: 0.78rem; }
+  .lang-toggle { width: 88px; height: 38px; font-size: 0.9rem; }
   .nav-toggle { width: 42px; height: 42px; }
 
   .grid-4,
@@ -1739,7 +1740,7 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .tier-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
-  .gallery-caption { font-size: 0.85rem; left: 10px; right: 10px; bottom: 8px; }
+  .gallery-caption { left: 10px; right: 10px; bottom: 8px; }
   .week-grid { grid-template-columns: 1fr; }
   .event-card { flex-direction: column; gap: 14px; }
   .event-date { display: flex; width: auto; align-items: center; gap: 10px; padding-right: 14px; }
@@ -1781,8 +1782,8 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
 .event-card--compact .event-date { width: 62px; }
 .event-card--compact .event-date .d { font-size: 1.5rem; }
 .event-card--compact .event-body { width: 100%; }
-.event-card--compact h3 { font-size: 1.08rem; margin: 0 0 6px; }
-.event-card--compact .event-meta { justify-content: center; margin: 0; font-size: 0.86rem; }
+.event-card--compact h3 { font-size: 1.22rem; margin: 0 0 6px; }
+.event-card--compact .event-meta { justify-content: center; margin: 0; font-size: 0.98rem; }
 @media (max-width: 1024px) {
   .event-grid.event-grid--compact { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1805,4 +1806,11 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
 @media (prefers-reduced-motion: reduce) {
   .gallery-grid--preview { transition: none; }
 }
+
+/* Larger, easier-to-read defaults ---------------------------------------- */
+.section h1 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+.gallery-caption { font-size: 1.05rem; }
+.card p, .card li { line-height: 1.7; }
+.timing-list li { padding: 11px 0; font-size: 1.05rem; }
+.footer-links, .footer-list { font-size: 1.05rem; }
 
