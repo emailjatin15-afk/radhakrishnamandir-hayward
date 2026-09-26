@@ -1796,3 +1796,13 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
    skyline edge would clash - hide it there. */
 .hero--compact .hero-silhouette { display: none; }
 
+/* Rotating photo preview + one-line festivals heading --------------------- */
+.gallery-grid--preview { transition: opacity 0.28s ease; }
+.gallery-grid--preview.is-fading { opacity: 0; }
+@media (min-width: 480px) {
+  #home-upcoming-title { white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-grid--preview { transition: none; }
+}
+

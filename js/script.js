@@ -1561,26 +1561,61 @@
     });
   }
 
-  /* ---- 8c. Home page photo preview -------------------------------------- */
+  /* ---- 8c. Home page photo preview (rotates through the gallery) --------- */
+  const HOME_GALLERY_INTERVAL = 5000;
+
   function initHomeGallery() {
     const grid = $('#home-gallery');
     if (!grid) return;
-    const limit = parseInt(grid.dataset.limit, 10) || 6;
+    const perView = parseInt(grid.dataset.limit, 10) || 3;
+
     loadData('data/gallery.json').then((data) => {
-      if (!data) return;
-      const render = () => {
-        grid.innerHTML = (data.photos || []).slice(0, limit).map((photo, i) => {
+      const photos = (data && data.photos) || [];
+      if (!photos.length) return;
+
+      let start = 0;
+      let timer = null;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function render() {
+        const count = Math.min(perView, photos.length);
+        let html = '';
+        for (let i = 0; i < count; i++) {
+          const photo = photos[(start + i) % photos.length];
           const caption = escapeHTML(pick(photo, 'caption'));
-          return '<a class="gallery-item" href="gallery.html" data-reveal="zoom"' +
-            ' style="--reveal-delay:' + ((i % 6) * 0.05).toFixed(2) + 's">' +
+          html += '<a class="gallery-item is-visible" href="gallery.html">' +
             '<img src="' + escapeHTML(photo.file) + '" loading="lazy" decoding="async" alt="' + caption + '">' +
             '<span class="gallery-caption">' + caption + '</span>' +
           '</a>';
-        }).join('');
-        observeReveal(grid);
-      };
+        }
+        grid.innerHTML = html;
+      }
+
+      function advance() {
+        start = (start + perView) % photos.length;
+        grid.classList.add('is-fading');
+        setTimeout(() => { render(); grid.classList.remove('is-fading'); }, 280);
+      }
+
+      function play() {
+        if (timer || reduceMotion || photos.length <= perView || document.hidden) return;
+        timer = setInterval(advance, HOME_GALLERY_INTERVAL);
+      }
+      function pause() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
       render();
+
+      // Pause while someone is looking at or tabbing through the photos,
+      // and while the tab is in the background.
+      grid.addEventListener('mouseenter', pause);
+      grid.addEventListener('mouseleave', play);
+      grid.addEventListener('focusin', pause);
+      grid.addEventListener('focusout', play);
+      document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); else play(); });
       document.addEventListener('temple:languagechange', render);
+      play();
     });
   }
 
