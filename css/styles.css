@@ -1752,3 +1752,16 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
   .timing-list .t-time { text-align: left; }
   .back-to-top { right: 14px; bottom: 14px; }
 }
+
+/* Gallery preview strip on the Home page ---------------------------------- */
+.gallery-grid.gallery-grid--preview {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 210px;
+}
+.gallery-grid--preview .gallery-item { cursor: pointer; }
+@media (max-width: 768px) {
+  .gallery-grid.gallery-grid--preview { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 170px; }
+}
+@media (max-width: 480px) {
+  .gallery-grid.gallery-grid--preview { grid-auto-rows: 140px; }
+}

@@ -223,6 +223,9 @@
       'home.connect.volunteerCta': 'Volunteer Sign-Up',
       'home.connect.social': 'Follow Us',
       'home.connect.socialText': 'Watch bhajans and katha on YouTube and see temple news and photos on Facebook.',
+      'home.gallery.eyebrow': 'From the Mandir',
+      'home.gallery.title': 'Photo Gallery',
+      'home.gallery.cta': 'View All Photos',
 
       /* Events */
       'events.hero.eyebrow': 'Utsav & Satsang',
@@ -611,6 +614,9 @@
       'home.connect.volunteerCta': 'स्वयंसेवा हेतु पंजीकरण',
       'home.connect.social': 'हमें फ़ॉलो करें',
       'home.connect.socialText': 'यूट्यूब पर भजन और कथा देखें तथा फ़ेसबुक पर मंदिर के समाचार और तस्वीरें देखें।',
+      'home.gallery.eyebrow': 'मंदिर से',
+      'home.gallery.title': 'फोटो गैलरी',
+      'home.gallery.cta': 'सभी तस्वीरें देखें',
 
       /* Events */
       'events.hero.eyebrow': 'उत्सव और सत्संग',
@@ -1543,6 +1549,29 @@
     });
   }
 
+  /* ---- 8c. Home page photo preview -------------------------------------- */
+  function initHomeGallery() {
+    const grid = $('#home-gallery');
+    if (!grid) return;
+    const limit = parseInt(grid.dataset.limit, 10) || 6;
+    loadData('data/gallery.json').then((data) => {
+      if (!data) return;
+      const render = () => {
+        grid.innerHTML = (data.photos || []).slice(0, limit).map((photo, i) => {
+          const caption = escapeHTML(pick(photo, 'caption'));
+          return '<a class="gallery-item" href="gallery.html" data-reveal="zoom"' +
+            ' style="--reveal-delay:' + ((i % 6) * 0.05).toFixed(2) + 's">' +
+            '<img src="' + escapeHTML(photo.file) + '" loading="lazy" decoding="async" alt="' + caption + '">' +
+            '<span class="gallery-caption">' + caption + '</span>' +
+          '</a>';
+        }).join('');
+        observeReveal(grid);
+      };
+      render();
+      document.addEventListener('temple:languagechange', render);
+    });
+  }
+
   /* ------------------------------------------------------------------------
      Form validation helpers (shared by donate + contact)
      ------------------------------------------------------------------------ */
@@ -1805,6 +1834,7 @@
     initToday();
     initEvents();
     initGallery();
+    initHomeGallery();
     initActivities();
     initDonationForm();
     initContactForm();
