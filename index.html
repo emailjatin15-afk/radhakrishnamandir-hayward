@@ -125,23 +125,8 @@
       </div>
     </section>
 
-    <!-- ============ UPCOMING EVENTS PREVIEW (rendered from EVENTS data in js/script.js) ============ -->
-    <section class="section section--tint">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="home.upcoming.eyebrow">Celebrate Together</p>
-          <h2 data-i18n="home.upcoming.title">Upcoming Festivals</h2>
-          <span class="divider" aria-hidden="true"></span>
-        </div>
-        <div class="event-grid" id="home-events" data-limit="4">
-          <noscript><p class="events-empty">Please enable JavaScript to see upcoming events, or call (650) 245-9500.</p></noscript>
-        </div>
-        <p class="text-center" style="margin-top:36px"><a class="btn" href="events.html" data-i18n="home.upcoming.cta">See All Events</a></p>
-      </div>
-    </section>
-
     <!-- ============ WEEKLY PROGRAMS STRIP ============ -->
-    <section class="section">
+    <section section--tint class="section section--tint">
       <img class="ornament-feather ornament-feather--r" src="assets/images/peacock-feather.svg" alt="" aria-hidden="true">
       <div class="container">
         <div class="section-head" data-reveal>
@@ -179,6 +164,75 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ PHOTO PREVIEW ============ -->
+    <section class="section" aria-labelledby="home-gallery-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="home.gallery.eyebrow">From the Mandir</p>
+          <h2 id="home-gallery-title" data-i18n="home.gallery.title">Photo Gallery</h2>
+          <span class="divider" aria-hidden="true"></span>
+        </div>
+        <!-- Photos come from data/gallery.json, the same file as the Gallery page -->
+        <div class="gallery-grid gallery-grid--preview" id="home-gallery" data-limit="3"></div>
+        <p class="text-center" style="margin-top:36px"><a class="btn" href="gallery.html" data-i18n="home.gallery.cta">View All Photos</a></p>
+      </div>
+    </section>
+
+    <!-- ============ STAY CONNECTED ============ -->
+    <section section--tint class="section section--tint" aria-labelledby="connect-title">
+      <img class="ornament-feather ornament-feather--l" src="assets/images/peacock-feather.svg" alt="" aria-hidden="true">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="home.connect.eyebrow">Stay Connected</p>
+          <h2 id="connect-title" data-i18n="home.connect.title">Be Part of the Mandir Family</h2>
+          <span class="divider" aria-hidden="true"></span>
+          <p class="lead" data-i18n="home.connect.lead">Get updates, lend a helping hand, and follow along online.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card card--hover connect-card" data-reveal style="--reveal-delay:.05s">
+            <span class="icon-badge icon-badge--whatsapp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9.2 8.2c.2 3 2.7 5.6 5.7 6l1.2-1.3 1.9.9c-.2 1.1-1.1 1.9-2.2 1.9A7.4 7.4 0 0 1 8.2 8.3c0-1.1.8-2 1.9-2.2l.9 1.9z"/></svg></span>
+            <h3 data-i18n="home.connect.whatsapp">Join Temple WhatsApp</h3>
+            <p class="muted" data-i18n="home.connect.whatsappText">Receive announcements about aarti, festivals, and events directly on your phone.</p>
+            <!-- To add a WhatsApp join button, restore this with the group invite link:
+                 <div class="connect-actions"><a class="btn btn--whatsapp" href="https://chat.whatsapp.com/XXXXXXXX" target="_blank" rel="noopener"><span data-i18n="home.connect.whatsappCta">Join WhatsApp Group</span></a></div> -->
+          </article>
+          <article class="card card--hover connect-card" data-reveal style="--reveal-delay:.15s">
+            <span class="icon-badge icon-badge--lotus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
+            <h3 data-i18n="home.connect.volunteer">Sign Up to Volunteer</h3>
+            <p class="muted" data-i18n="home.connect.volunteerText">Help with festivals, prasad, decorations, and daily seva. Every helping hand is a blessing.</p>
+            <!-- Opens the contact form with "Volunteering" pre-selected. To use a sign-up form instead (e.g. Google Forms), replace the href. -->
+            <div class="connect-actions">
+              <a class="btn" href="contact.html?subject=volunteer#message"><span data-i18n="home.connect.volunteerCta">Volunteer Sign-Up</span></a>
+            </div>
+          </article>
+          <article class="card card--hover connect-card" data-reveal style="--reveal-delay:.25s">
+            <span class="icon-badge icon-badge--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></span>
+            <h3 data-i18n="home.connect.social">Follow Us</h3>
+            <p class="muted" data-i18n="home.connect.socialText">Watch bhajans and katha on YouTube and see temple news and photos on Facebook.</p>
+            <div class="connect-actions">
+              <!-- To add a YouTube button, restore it here with the channel URL -->
+              <a class="btn btn--facebook" href="https://facebook.com/hayward.hindu.temple.2025/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>Facebook<span class="visually-hidden"> (opens in a new tab)</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UPCOMING EVENTS PREVIEW (rendered from EVENTS data in js/script.js) ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="home.upcoming.eyebrow">Celebrate Together</p>
+          <h2 data-i18n="home.upcoming.title">Upcoming Festivals</h2>
+          <span class="divider" aria-hidden="true"></span>
+        </div>
+        <div class="event-grid event-grid--compact" id="home-events" data-limit="4" data-compact>
+          <noscript><p class="events-empty">Please enable JavaScript to see upcoming events, or call (650) 245-9500.</p></noscript>
+        </div>
+        <p class="text-center" style="margin-top:36px"><a class="btn" href="events.html" data-i18n="home.upcoming.cta">See All Events</a></p>
       </div>
     </section>
 
@@ -236,60 +290,6 @@
         </div>
       </div>
       <img class="hero-silhouette" src="assets/images/temple-silhouette.svg" alt="" aria-hidden="true">
-    </section>
-
-    <!-- ============ STAY CONNECTED ============ -->
-    <section class="section" aria-labelledby="connect-title">
-      <img class="ornament-feather ornament-feather--l" src="assets/images/peacock-feather.svg" alt="" aria-hidden="true">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="home.connect.eyebrow">Stay Connected</p>
-          <h2 id="connect-title" data-i18n="home.connect.title">Be Part of the Mandir Family</h2>
-          <span class="divider" aria-hidden="true"></span>
-          <p class="lead" data-i18n="home.connect.lead">Get updates, lend a helping hand, and follow along online.</p>
-        </div>
-        <div class="grid grid-3">
-          <article class="card card--hover connect-card" data-reveal style="--reveal-delay:.05s">
-            <span class="icon-badge icon-badge--whatsapp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9.2 8.2c.2 3 2.7 5.6 5.7 6l1.2-1.3 1.9.9c-.2 1.1-1.1 1.9-2.2 1.9A7.4 7.4 0 0 1 8.2 8.3c0-1.1.8-2 1.9-2.2l.9 1.9z"/></svg></span>
-            <h3 data-i18n="home.connect.whatsapp">Join Temple WhatsApp</h3>
-            <p class="muted" data-i18n="home.connect.whatsappText">Receive announcements about aarti, festivals, and events directly on your phone.</p>
-            <!-- To add a WhatsApp join button, restore this with the group invite link:
-                 <div class="connect-actions"><a class="btn btn--whatsapp" href="https://chat.whatsapp.com/XXXXXXXX" target="_blank" rel="noopener"><span data-i18n="home.connect.whatsappCta">Join WhatsApp Group</span></a></div> -->
-          </article>
-          <article class="card card--hover connect-card" data-reveal style="--reveal-delay:.15s">
-            <span class="icon-badge icon-badge--lotus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
-            <h3 data-i18n="home.connect.volunteer">Sign Up to Volunteer</h3>
-            <p class="muted" data-i18n="home.connect.volunteerText">Help with festivals, prasad, decorations, and daily seva. Every helping hand is a blessing.</p>
-            <!-- Opens the contact form with "Volunteering" pre-selected. To use a sign-up form instead (e.g. Google Forms), replace the href. -->
-            <div class="connect-actions">
-              <a class="btn" href="contact.html?subject=volunteer#message"><span data-i18n="home.connect.volunteerCta">Volunteer Sign-Up</span></a>
-            </div>
-          </article>
-          <article class="card card--hover connect-card" data-reveal style="--reveal-delay:.25s">
-            <span class="icon-badge icon-badge--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></span>
-            <h3 data-i18n="home.connect.social">Follow Us</h3>
-            <p class="muted" data-i18n="home.connect.socialText">Watch bhajans and katha on YouTube and see temple news and photos on Facebook.</p>
-            <div class="connect-actions">
-              <!-- To add a YouTube button, restore it here with the channel URL -->
-              <a class="btn btn--facebook" href="https://facebook.com/hayward.hindu.temple.2025/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>Facebook<span class="visually-hidden"> (opens in a new tab)</span></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PHOTO PREVIEW ============ -->
-    <section class="section section--tint" aria-labelledby="home-gallery-title">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="home.gallery.eyebrow">From the Mandir</p>
-          <h2 id="home-gallery-title" data-i18n="home.gallery.title">Photo Gallery</h2>
-          <span class="divider" aria-hidden="true"></span>
-        </div>
-        <!-- Photos come from data/gallery.json, the same file as the Gallery page -->
-        <div class="gallery-grid gallery-grid--preview" id="home-gallery" data-limit="6"></div>
-        <p class="text-center" style="margin-top:36px"><a class="btn" href="gallery.html" data-i18n="home.gallery.cta">View All Photos</a></p>
-      </div>
     </section>
 
     <!-- ============ CTA ============ -->

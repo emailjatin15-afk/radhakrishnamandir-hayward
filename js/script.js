@@ -1171,7 +1171,7 @@
       });
   }
 
-  function eventCard(ev, delay) {
+  function eventCard(ev, delay, compact) {
     const locale = LANGUAGES[currentLang].locale;
     const title = escapeHTML(ev.title[currentLang] || ev.title.en);
     const desc = markPlaceholders(escapeHTML(ev.desc[currentLang] || ev.desc.en));
@@ -1207,6 +1207,17 @@
         <p>${desc}</p>
         ${highlights}${note}${phones}`;
 
+    // Compact card: date and title only, used for the Home page strip
+    if (compact) {
+      return `<article class="card card--hover event-card event-card--compact" data-reveal style="--reveal-delay:${delay}s">
+      <div class="event-date" aria-hidden="true">${badge}</div>
+      <div class="event-body">
+        <h3>${title}</h3>
+        <p class="event-meta"><span>${escapeHTML(dateText)}</span></p>
+      </div>
+    </article>`;
+    }
+
     // Events with a flyer image (image: { src, full, alt }) get a larger, full-width card
     if (ev.image) {
       const hint = { en: 'Click to view the full flyer', hi: 'पूरा पोस्टर देखने के लिए क्लिक करें' };
@@ -1234,9 +1245,10 @@
     const el = $('#home-events');
     if (!el) return;
     const limit = parseInt(el.dataset.limit, 10) || 4;
+    const compact = el.hasAttribute('data-compact');
     const list = upcomingEvents('festival').filter((e) => e.date).slice(0, limit);
     el.innerHTML = list.length
-      ? list.map((ev, i) => eventCard(ev, (i * 0.08).toFixed(2))).join('')
+      ? list.map((ev, i) => eventCard(ev, (i * 0.08).toFixed(2), compact)).join('')
       : `<p class="events-empty">${escapeHTML(t('ui.noEvents'))}</p>`;
     observeReveal(el);
   }

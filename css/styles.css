@@ -1765,3 +1765,34 @@ html[lang="hi"] .site-footer h2 { font-size: 1.2rem; }
 @media (max-width: 480px) {
   .gallery-grid.gallery-grid--preview { grid-auto-rows: 140px; }
 }
+
+/* Compact festival cards: one line on the Home page ----------------------- */
+.event-grid.event-grid--compact {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.event-card--compact {
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.event-card--compact .event-date { width: 62px; }
+.event-card--compact .event-date .d { font-size: 1.5rem; }
+.event-card--compact .event-body { width: 100%; }
+.event-card--compact h3 { font-size: 1.08rem; margin: 0 0 6px; }
+.event-card--compact .event-meta { justify-content: center; margin: 0; font-size: 0.86rem; }
+@media (max-width: 1024px) {
+  .event-grid.event-grid--compact { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .event-grid.event-grid--compact { grid-template-columns: 1fr; }
+  .event-card--compact { flex-direction: row; text-align: left; }
+  .event-card--compact .event-meta { justify-content: flex-start; }
+}
+
+/* The compact hero now sits above the maroon donate banner, so its cream
+   skyline edge would clash - hide it there. */
+.hero--compact .hero-silhouette { display: none; }
+
